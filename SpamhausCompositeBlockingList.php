@@ -20,7 +20,7 @@ class SpamhausCompositeBlockingList implements SpamFilterInterface {
             $result = dns_get_record($ip . '.cbl.abuseat.org');
             if (is_array($result)) {
                 foreach ($result as $r) {
-                    if ($r['ip'] == '127.0.0.2') {
+                    if (!empty($r['ip']) && $r['ip'] == '127.0.0.2') {
                         return 10;
                     }
                 }
