@@ -12,7 +12,7 @@ class SpamhausCompositeBlockingList implements SpamFilterInterface {
      * @return int
      *   5 if it was found in the blacklist or 0 if not
      */
-    public static function getScore($message) {
+    public static function getScore(&$message) {
         if (!empty($message['IP']) && strpos($message['IP'], '.') !== false) {
             $parts = explode('.', $message['IP']);
             $parts = array_reverse($parts);
